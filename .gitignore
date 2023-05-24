@@ -1,8 +1,8 @@
-.DS_Store
-.aux
-.fdb_latexmk
-.fls
-.log
-.out
-.gz
-.sty
+*.DS_Store
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.gz
+*.sty
