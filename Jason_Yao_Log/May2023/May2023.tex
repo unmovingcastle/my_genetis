@@ -1,15 +1,93 @@
 \documentclass[12pt,letterpaper]{article}
 \usepackage{preamble}
+\usepackage{xurl}
 
 \newcommand\course{GENETIS}
 \newcommand\hwnumber{May2023}
 
 \begin{document}
-\setcounter{section}{23}
-\section{}
-Hello World
+\setcounter{section}{22}
+\section{Tue}
+\subsection{Bash}
+Learnt the following
+\begin{enumerate}
+  \item translate "tr": when appending with "echo foo >> bar", 
+    the final character is a newline ("\n").
+    Therefore the next thing we append appears on the next line.
+    If we don't want this behavior, we could "tr" out the new-line character through
+    \begin{verbatim}
+      echo "foo" | tr "\n" "(whatever)" >> bar
+    \end{verbatim}
+    which writes "foo(whatever)" to the file "bar" as usual, but
+    whatever we append next will go to the right of "foo(whatever)" 
+    instead of to the next line.
+    
+  \item basic calculator "bc" for floats: \\
+    "echo '' scale=2;2/100 '' | bc" returns .02 
+  \item sed delimiter: turns out that any character following "s" is the delimiter,
+    so for example "sed -i 's+hello+world+' file.txt" is the same as
+    "sed -i 's/hello/world/' file.txt".
+\end{enumerate}
 
-\section{}
-Goodbye Universe
+
+\subsection{SLURM}
+Went through the following documentation:
+\begin{enumerate}
+  \item HPC basics
+  \item Storage Documentation
+  \item Data Storage $\to$ Overview of File System (\textit{this one has a nice table})
+  \item Batch System Concepts
+\end{enumerate}
+
+
+\section{Wed}
+\subsection{Meeting with Julie}
+\begin{enumerate}
+  \item Don't get caught up on the details of the loop.
+    Focus on being able to navigate through it; remember what each part does
+    and what files are called to do what (and where they are). 
+    \textit{Finish the first assignment by next Wednesday.}
+  \item Nicholas is currently working with XF for PAEA ARA-hpol (part B), 
+    so I will probably be working on the GA for ARA-hpol (part A)? 
+    Confirm with Amy on Friday.
+  \item Should I start looking into AraSim and learn about Birefringence? 
+    Confirm with Amy on Friday.
+\end{enumerate}
+
+\subsection{SLURM}
+Went over the following
+\begin{enumerate}
+  \item Batch System Concepts
+  \item Batch Execution Environment\\
+  \item Job Scripts\\
+    \textit{seems like we don't really use parallel computing introduced in
+    this section? We just submit jobs through a job array}
+  \item Job Submission (mostly focused on \textbf{Job Arrays}). 
+    In particular, note that for example 
+    \begin{verbatim}
+      sbatch --array=1-10%4 test.sh
+    \end{verbatim}
+    is going to submit an array of 10 jobs, but only 4 of these will be run at
+    the same time (so 1-4, then 5-8, and finally 9 and 10).
+    
+  \item "A" is account ("PAS1960"); "N" is number of nodes; "t" is wall time.
+  \item "n" is the number of tasks. Much better explanations available at
+    \url{https://stackoverflow.com/questions/65603381/slurm-nodes-tasks-cores-and-cpus}
+    and 
+    \url{https://stackoverflow.com/questions/39186698/what-does-the-ntasks-or-n-tasks-does-in-slurm}
+
+
+\end{enumerate}
+
+
+\subsection{problems}
+\begin{enumerate}
+  \item still a bit unfamiliar with the SLURM directives such as "n". Should review.
+  \item still unfamiliar with parallel computing (multiple nodes and/or multiple cores).
+    But since we always use only one node per job, I don't have to worry about
+    and "srun", "sbcast" and all those parallel computing commands
+    (at least not now?)
+  
+\end{enumerate}
 
 \end{document}
