@@ -44,4 +44,41 @@
     to anything.
 \end{enumerate}
 
+\section{Sun}
+\subsection{Meeting with Julie}
+\begin{enumerate}
+  \item Currently a bit confused by the job submission script "GPU_XF_job.sh"
+  \item I think this is because I am not familiar enough with the file structure yet.
+  \item Also, I am not entirely sure what the "individual number" is for in this script.
+\end{enumerate}
+
+\section{Mon}
+\subsection{Meeting with Julie}
+\begin{enumerate}
+  \item Still on the job submission script of "Part B1". I am confused about when
+    exactly are the "indiv_parent_dir" created 
+    (the ones in \$"XFproj/Simulations")
+\end{enumerate}
+\subsection{SLURM}
+  \textbf{Filename replacement} are as follows:
+\begin{enumerate}
+  \item "%x" - Job name, which can be given as \texttt{----job-name=<name>}
+  \item "%a" - Job array ID (index) number
+  \item "%A" - Job Array's master job allocation number
+  \item More options here: \url{https://slurm.schedmd.com/sbatch.html}
+\end{enumerate}
+
+\noindent Note that the following are not the same:
+\begin{enumerate}
+  \item \$"SLURM_ARRAY_JOB_ID": this is the "%A" from above
+  \item \$"SLURM_ARRAY_TASK_ID": this is the index ("%a" from above)
+\end{enumerate}
+
+
+
+\section{Tue}
+\subsection{Meeting with Julie} 
+\begin{enumerate}
+  \item Started reading Julie's candidacy paper.
+\end{enumerate}
 \end{document}
