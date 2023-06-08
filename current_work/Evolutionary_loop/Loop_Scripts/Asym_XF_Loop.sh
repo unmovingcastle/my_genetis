@@ -183,26 +183,31 @@ do
 			then
 				if [ $database_flag -eq 0 ]
 				then
-					./Loop_Parts/Part_B/Part_B_GPU_job1.sh $indiv $gen $NPOP $WorkingDir $RunName $XmacrosDir $XFProj $GeoFactor $num_keys
+					./Loop_Parts/Part_B/Part_B_GPU_job1.sh\
+					 $indiv $gen $NPOP $WorkingDir $RunName $XmacrosDir $XFProj $GeoFactor $num_keys
 
 				else
-					./Loop_Parts/Part_B/Part_B_GPU_job1_database.sh $indiv $gen $NPOP $WorkingDir $RunName $XmacrosDir $XFProj $GeoFactor $num_keys
-
+					./Loop_Parts/Part_B/Part_B_GPU_job1_database.sh\
+					 $indiv $gen $NPOP $WorkingDir $RunName $XmacrosDir $XFProj $GeoFactor $num_keys
 				fi
 
 			else
 				if [ $database_flag -eq 0 ]
 				then
-					./Loop_Parts/Part_B/Part_B_job1_sep.sh $indiv $gen $NPOP $WorkingDir $RunName $XmacrosDir $XFProj $GeoFactor $num_keys 
+					./Loop_Parts/Part_B/Part_B_job1_sep.sh\
+					 $indiv $gen $NPOP $WorkingDir $RunName $XmacrosDir $XFProj $GeoFactor $num_keys 
 
 				else
-					./Loop_Parts/Part_B/Part_B_GPU_job1_asym_database.sh $indiv $gen $NPOP $WorkingDir $RunName $XmacrosDir $XFProj $GeoFactor $num_keys
-
+					./Loop_Parts/Part_B/Part_B_GPU_job1_asym_database.sh\
+					 $indiv $gen $NPOP $WorkingDir $RunName $XmacrosDir $XFProj $GeoFactor $num_keys
 				fi
 			fi
+
 		else
-			./Loop_Parts/Part_B/Part_B_Curved_1.sh $indiv $gen $NPOP $WorkingDir $RunName $XmacrosDir $XFProj $GeoFactor $num_keys
-			#./Loop_Parts/Part_B/Part_B_Curved_Constant_Quadratic_1.sh $indiv $gen $NPOP $WorkingDir $RunName $XmacrosDir $XFProj $GeoFactor $num_keys
+			./Loop_Parts/Part_B/Part_B_Curved_1.sh \
+			 $indiv $gen $NPOP $WorkingDir $RunName $XmacrosDir $XFProj $GeoFactor $num_keys
+			#./Loop_Parts/Part_B/Part_B_Curved_Constant_Quadratic_1.sh \
+			# $indiv $gen $NPOP $WorkingDir $RunName $XmacrosDir $XFProj $GeoFactor $num_keys
 		fi
 		state=3
 		./SaveState_Prototype.sh $gen $state $RunName $indiv
@@ -215,14 +220,16 @@ do
 
 		if [ $database_flag -eq 0 ]
 		then
-		#./Loop_Parts/Part_B/Part_B_GPU_job2_asym.sh $indiv $gen $NPOP $WorkingDir $RunName $XmacrosDir $XFProj $GeoFactor $num_keys $NSECTIONS
-		./Loop_Parts/Part_B/Part_B_GPU_job2_asym_array.sh $indiv $gen $NPOP $WorkingDir $RunName $XmacrosDir $XFProj $GeoFactor $num_keys $NSECTIONS
+		#./Loop_Parts/Part_B/Part_B_GPU_job2_asym.sh \
+		#$indiv $gen $NPOP $WorkingDir $RunName $XmacrosDir $XFProj $GeoFactor $num_keys $NSECTIONS
+		./Loop_Parts/Part_B/Part_B_GPU_job2_asym_array.sh \
+		 $indiv $gen $NPOP $WorkingDir $RunName $XmacrosDir $XFProj $GeoFactor $num_keys $NSECTIONS
 		else
-		./Loop_Parts/Part_B/Part_B_GPU_job2_asym_database.sh $indiv $gen $NPOP $WorkingDir $RunName $XmacrosDir $XFProj $GeoFactor $num_keys $NSECTIONS
+		./Loop_Parts/Part_B/Part_B_GPU_job2_asym_database.sh \
+		 $indiv $gen $NPOP $WorkingDir $RunName $XmacrosDir $XFProj $GeoFactor $num_keys $NSECTIONS
 		fi
 
 		state=4
-
 		./SaveState_Prototype.sh $gen $state $RunName $indiv
 	fi
 

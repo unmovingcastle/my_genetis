@@ -157,13 +157,13 @@ cat simulationPECmacroskeleton2_GPU.txt >> simulation_PEC.xmacro
 ## We need to change the gridsize by the same factor as the antenna size
 ## The gridsize in the macro skeleton is currently set to 0.1
 ## We want to make it scale in line with our scalefactor
-#initial_gridsize=0.1
-#new_gridsize=$(bc <<< "scale=6; $initial_gridsize/$GeoFactor")
+# initial_gridsize=0.1
+# new_gridsize=$(bc <<< "scale=6; $initial_gridsize/$GeoFactor")
 ## I'm going to test smaller grid sizes
-#gen_grid_factor=$((($gen*5+1)))
-#new_gridsize=$(bc <<< "scale=6; $initial_gridsize/$gen_grid_factor")
-#sed -i "s/var gridSize = 0.1;/var gridSize = $new_gridsize;/" simulation_PEC.xmacro
-#echo "New grid size is ${new_gridsize}"
+# gen_grid_factor=$((($gen*5+1)))
+# new_gridsize=$(bc <<< "scale=6; $initial_gridsize/$gen_grid_factor")
+# sed -i "s/var gridSize = 0.1;/var gridSize = $new_gridsize;/" simulation_PEC.xmacro
+# echo "New grid size is ${new_gridsize}"
 
 sed -i "s+fileDirectory+${WorkingDir}/Generation_Data+" simulation_PEC.xmacro
 # The above sed command substitute for hardcoded words and don't use a dummy file
@@ -197,7 +197,9 @@ xfdtd $XFProj --execute-macro-script=$XmacrosDir/simulation_PEC.xmacro || true
 cd $WorkingDir 
 ## Here is where we need to submit the GPU job
 ## We want to make this loop over each individual and send each job for fewer minutes
-#sbatch -N 1 -n 40 -G 1:default -t 0:15:00 -A PAS1960 --export=ALL,WorkingDir=$WorkingDir,RunName=$RunName,XmacrosDir=$XmacrosDir,XFProj=$XFProj,NPOP=$NPOP,indiv=$indiv Batch_Jobs/GPU_XF_Job.sh 
+# sbatch -N 1 -n 40 -G 1:default -t 0:15:00 -A PAS1960 --export=ALL,\
+# WorkingDir=$WorkingDir,RunName=$RunName,XmacrosDir=$XmacrosDir,XFProj=$XFProj,NPOP=$NPOP,\
+# indiv=$indiv Batch_Jobs/GPU_XF_Job.sh 
 
 
 ######## End Part B1 ##########################################################################
@@ -211,4 +213,6 @@ else
 fi
 
 # We'll make the run name the job name. This way, we can use it in the SBATCH commands
-sbatch --array=1-${NPOP}%${batch_size} --export=ALL,WorkingDir=$WorkingDir,RunName=$RunName,XmacrosDir=$XmacrosDir,XFProj=$XFProj,NPOP=$NPOP,indiv=$individual_number,indiv_dir=$indiv_dir,gen=${gen} --job-name=${RunName} Batch_Jobs/GPU_XF_Job.sh
+sbatch --array=1-${NPOP}%${batch_size} --export=ALL,WorkingDir=$WorkingDir,RunName=$RunName,\
+XmacrosDir=$XmacrosDir,XFProj=$XFProj,NPOP=$NPOP,indiv=$individual_number,\
+indiv_dir=$indiv_dir,gen=${gen} --job-name=${RunName} Batch_Jobs/GPU_XF_Job.sh

@@ -1,12 +1,12 @@
 \documentclass[12pt,letterpaper]{article}
 \usepackage{preamble}
-\usepackage{xurl}
 
 \newcommand\course{GENETIS}
 \newcommand\hwnumber{June 2023}
 
 \begin{document}
 
+% June 1
 \section{Thu}
 \subsection{Bash}
 \begin{enumerate}
@@ -19,13 +19,13 @@
     Option "-p <prompt>" outputs the "prompt" string before reading user input.\\
     Option "-n <number>" returns after reading the specified "number" of chars.\\
     Option "-s" does not echo the user's input.
-
-
 \end{enumerate}
 
+% June 2
 \section{Fri}
 \textit{On a flight home. Didn't do much except started going over Part B1 again}
 
+% June 3
 \section{Sat}
 \subsection{Meeting with Julie}
 \begin{enumerate}
@@ -44,6 +44,7 @@
     to anything.
 \end{enumerate}
 
+% June 4
 \section{Sun}
 \subsection{Meeting with Julie}
 \begin{enumerate}
@@ -52,8 +53,10 @@
   \item Also, I am not entirely sure what the "individual number" is for in this script.
 \end{enumerate}
 
+% June 5
 \section{Mon}
 \subsection{Meeting with Julie}
+\label{65S1}
 \begin{enumerate}
   \item Still on the job submission script of "Part B1". I am confused about when
     exactly are the "indiv_parent_dir" created 
@@ -75,13 +78,14 @@
 \end{enumerate}
 
 
-
+% June 6
 \section{Tue}
 \subsection{Meeting with Julie} 
 \begin{enumerate}
   \item Started reading Julie's candidacy paper.
 \end{enumerate}
 
+% June 7
 \section{Wed}
 \subsection{Meeting with Julie}
 \begin{enumerate}
@@ -101,9 +105,27 @@
     \begin{verbatim}
       for i in `seq 1 $NPOP`
     \end{verbatim}
-    Everything we type inside the backticks is executed before in the shell before
-    the main command (such as "chown"), and the output of the backticked-command is 
-    then read by the main command
-    
+    Everything we type inside the backticks is executed before the main command
+    (such as "chown"), and the output of the backticked-command is then read by
+    the main command
 \end{enumerate}
+
+% June 8
+\section{Thu}
+\subsection{Meeting with Julie}
+\begin{enumerate}
+  \item Regarding Part \ref{65S1} of June 5th, from Alex: 
+    \begin{quote}
+    those are created by XF. It’s like a backend thing, we never make them
+    ourselves but by virtue of simulating antennas they get made by XF as the
+    location to store the antenna simulation data
+    \end{quote}
+    In other words, we do not ourselves "mkdir" the \$"indiv_dir_parent".
+  \item Meeting with Julie today moved to Monday next week.
+  \item Went over chapter 3 of Julie's candidacy.
+  \item Finished "Loop_Parts/Part_B" second pass, moving on to "Part_B2". Adding line
+    breaks in the process; \textbf{Be careful with the trailing whitespace}
+    \textit{perhaps it's better to just leave them as single long lines?}
+\end{enumerate}
+
 \end{document}
