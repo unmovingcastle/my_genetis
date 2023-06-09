@@ -75,7 +75,7 @@ chmod -R 777 $XmacrosDir
 cd $xmacrosDir 
 
 # the list of frequencies, scaled up by 100 to avoid float operation errors in bash
-freqlist=
+freqlist=\
 "8333 10000 11667 13333 15000 16667 18334 20000 21667 23334 25000 26667 28334 30000 31667 
 33334 35000 36667 38334 40001 41667 43334 45001 46667 48334 50001 51668 53334 55001 56668 
 58334 60001 61668 63334 65001 66668 68335 70001 71668 73335 75001 76668 78335 80001 81668 
@@ -189,10 +189,7 @@ echo '3. Close XF'
 #read -p "Press any key to continue... " -n1 -s
 
 module load xfdtd/7.9.2.2 
-
 xfdtd $XFProj --execute-macro-script=$XmacrosDir/simulation_PEC.xmacro || true  
-
-
 
 cd $WorkingDir 
 ## Here is where we need to submit the GPU job
@@ -200,7 +197,6 @@ cd $WorkingDir
 # sbatch -N 1 -n 40 -G 1:default -t 0:15:00 -A PAS1960 --export=ALL,\
 # WorkingDir=$WorkingDir,RunName=$RunName,XmacrosDir=$XmacrosDir,XFProj=$XFProj,NPOP=$NPOP,\
 # indiv=$indiv Batch_Jobs/GPU_XF_Job.sh 
-
 
 ######## End Part B1 ##########################################################################
 # JK! Here's another way of submitting the jobs so that we can give each individual to one job! 

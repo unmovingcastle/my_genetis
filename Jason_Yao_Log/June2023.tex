@@ -114,18 +114,73 @@
 \section{Thu}
 \subsection{Meeting with Julie}
 \begin{enumerate}
-  \item Regarding Part \ref{65S1} of June 5th, from Alex: 
+  \item Regarding Part \ref{65S1} of the June 5th entry, from Alex: 
     \begin{quote}
     those are created by XF. It’s like a backend thing, we never make them
     ourselves but by virtue of simulating antennas they get made by XF as the
     location to store the antenna simulation data
     \end{quote}
     In other words, we do not ourselves "mkdir" the \$"indiv_dir_parent".
+
   \item Meeting with Julie today moved to Monday next week.
-  \item Went over chapter 3 of Julie's candidacy.
-  \item Finished "Loop_Parts/Part_B" second pass, moving on to "Part_B2". Adding line
-    breaks in the process; \textbf{Be careful with the trailing whitespace}
-    \textit{perhaps it's better to just leave them as single long lines?}
+
+  \item \st{It seems unlikely to be a bug given how long this script has been used,
+    but I am getting an error from the for loop through all frequencies in
+    freqlist. Will ask Alex about it.}
+    I'm an indiot. I need to initialize \$"GeoFactor" first.
+
+  \item Finished "Loop_Parts/Part_B1" second pass, moving on to "Part_B2". Adding line
+    breaks in the process; \textbf{Be careful with the trailing whitespace!}
+    \textit{Mayhap it's better to just leave them as single long lines?}
+
+  \item \textbf{TODO:} sometime in the future I'll need to figure out what 
+    "simulation_PEC.xmacro" and "output.xmacro" do to really understand what "Part_B1" 
+    and "Part_B2" are about.
 \end{enumerate}
 
+% June 9
+\section{Fri}
+\subsection{Meeting with Julie}
+\begin{enumerate}
+  \item \st{Probably trivial, but it seems like the uan files are already being moved
+    to the correct directory at the end of Part\_B2, so I am not sure why we do it
+    again at the beginning of Part\_C.}
+  \item One of the "mv" command might be extra; will check with Alex.
+  \item "Part_C" second pass: digging into the python codes; should be able to finish
+    by tomorrow.
+\end{enumerate}
+\subsection{Bash}
+\begin{enumerate}
+  \item The dollar sign works inside the double quotes so there is no need for string
+    concatenation in the example below:
+    \begin{verbatim}
+      $a=2;$b=2
+      echo "a * b = $(($a*$b))"
+    \end{verbatim}
+    The above outputs "a * b = 4". Note that the \$((...)) part is for arithmetics.
+  \item At some point I should try to figure out exactly what double quotes are for in
+    shell scripts; they seem to be more than just strings?
+    
+\end{enumerate}
+% June 10
+% June 11
+% June 12
+% June 13
+% June 14
+% June 15
+% June 16
+% June 17
+% June 18
+% June 19
+% June 20
+% June 21
+% June 22
+% June 23
+% June 24
+% June 25
+% June 26
+% June 27
+% June 28
+% June 29
+% June 30
 \end{document}

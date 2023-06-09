@@ -241,7 +241,6 @@ do
 		state=5
 
 		./SaveState_Prototype.sh $gen $state $RunName $indiv
-
 	fi
 
 	## Part D1 ##
