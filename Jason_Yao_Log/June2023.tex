@@ -171,8 +171,67 @@
   \item Go to Monday's collaboration meeting this week if possible to see if there's a 
     project for me.
 \end{enumerate}
+
+\subsection{Python}
+\subsubsection{XFintoARA.py}
+\begin{enumerate}
+  \item instead of using the "%"'s for string interpolation, we could use "f-strings".
+  \item inside the curly braces we can call variables, for instance \{"g.WorkingDir"\}
+    in line 66:
+    \begin{verbatim}
+         uanName = f'{g.WorkingDir}/.../{g.gen}_{indiv}_{freqNum}.uan'  
+    \end{verbatim}
+    
+  \item The "g" above is from line 102: "g = parser.parse_args()"
+  \item "Line 73": "mat = [["``0'' "for x in range(n)] for y in range(m)]" is simply 
+    python's way to do "mat=zeros(m,n)" in Matlab. ("List Comprehension")
+\end{enumerate}
+
 % June 11
+\newpage
+\setcounter{section}{11}
+
 % June 12
+\section{Mon}
+\subsection{Python}
+\subsubsection{XFintoARA.py}
+The following pertains "line 81 \& 82"
+\begin{enumerate}
+  \item "line 81" first turns the third entry in the list "lineList" into a float.
+  \item "line 82" contains the following: \verb|"%.2f" % 10| which turns "10"
+    into "10.00". This is NOT modulo operation; this is probably more like string 
+    interpolation.
+  \item Mostly finished reading this python script. Moving on to "Part C" tomorrow.
+
+\end{enumerate}
+\subsubsection{General}
+\begin{enumerate}
+  \item To access the "help" message of "argparse"'s "add_argument" function,
+    one can run the command \verb|python3 <filename>.py -h| at the terminal
+  \item For more info on the "argparse" module one can look through the
+    documentation of "argparse" on \url{
+      https://docs.python.org/3/library/argparse.html 
+    } and the tutorial at \url{
+      https://towardsdatascience.com/
+      a-simple-guide-to-command-line-arguments-with-argparse-6824c30ab1c3
+    }
+  \item \st{Reviewed file opening (with open, etc)}
+  \item mode "w" and "w+": "w" is write whereas "w+" is read and write
+  \item apparently with python3, when using "os.chmod" one needs to add "0o" (zero-oh)
+    in front of "777" to grant all read-write-execute, etc. For instance:\\
+    \verb|os.chmod("<filename>", 0o770)|\\
+    This is because
+    \begin{quote}
+      In unix conventions, written numbers are assumed to be decimal unless they are 
+      prefixed with a "0x" (or "0X") in which case they are hexadecimal 
+    \end{quote}
+    (\url{https://stackoverflow.com/questions/32729309/
+    what-is-the-purpose-of-the-octal-digit-0-permission})
+    and according to the error message we ``use an 0o prefix for octal integers''.
+    
+\end{enumerate}
+
+
 % June 13
 % June 14
 % June 15
