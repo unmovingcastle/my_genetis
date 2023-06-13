@@ -201,7 +201,7 @@ The following pertains "line 81 \& 82"
   \item "line 82" contains the following: \verb|"%.2f" % 10| which turns "10"
     into "10.00". This is NOT modulo operation; this is probably more like string 
     interpolation.
-  \item Mostly finished reading this python script. Moving on to "Part C" tomorrow.
+  \item Mostly finished reading this python script. Moving on to "Part D" tomorrow.
 
 \end{enumerate}
 \subsubsection{General}
@@ -228,11 +228,25 @@ The following pertains "line 81 \& 82"
     (\url{https://stackoverflow.com/questions/32729309/
     what-is-the-purpose-of-the-octal-digit-0-permission})
     and according to the error message we ``use an 0o prefix for octal integers''.
-    
 \end{enumerate}
 
-
 % June 13
+\section{Tue}
+\subsection{Meeting with Julie}
+\begin{enumerate}
+  \item Meeting with Julie today didn't happen.
+  \item Around line 24 of "Part_D1_Array.sh" the comment says to ``make a directory
+    to hold the AraSim output and error files  \textit{for each generation}'' but it
+    seems like we are only making the directory for the zeroth gen?
+\end{enumerate}
+\subsection{Bash}
+\begin{enumerate}
+  \item option -"e" of "sed" allows for multiple commands at once; for instance,\\
+    \verb|sed -e "s/world/universe/" -e "s/hello/goodbye/" ./temp > ./newtemp|\\
+    first replaces the word ``world'' in "temp" with ``universe'' and then ``hello''
+    with ``goodbye'' and then pipe these changes to a new file "newtemp".
+\end{enumerate}
+
 % June 14
 % June 15
 % June 16
