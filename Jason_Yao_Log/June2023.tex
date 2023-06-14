@@ -248,6 +248,87 @@ The following pertains "line 81 \& 82"
 \end{enumerate}
 
 % June 14
+\section{Wed}
+\subsection{Meeting with Julie}
+\begin{enumerate}
+  \item Continuing "Part_D1" second pass. 
+  \item Looking into the job submission script "Batch_Jobs/AraSimCall_Array.sh"
+  \item Sort of annoying, but it seems like SLURM directives simply cannot be broken 
+    into multiple lines with backslash, so I'll just leave them.
+  \item \st{what do num and seed in AraSimCall\_Array.sh refer to?} "Seed" is
+    defined at the very beginning of the main loop and passed to the scripts
+    along the way. See page 155 (Appendix A) of Julie's dissertation.
+  \item Note: haven't looked into "setup.txt" yet
+\end{enumerate}
+
+\subsection{AraSim Job Submission Script}
+This is an attempt to understand "AraSimCall_Array.sh". My own edited version of
+the job submission script as attached at the end of this section. Run-on lines
+are mainly just SLURM directives which are unimportant here, so they are
+ignored here in the log.
+\begin{enumerate}
+  \item This is for "line 15". 
+    There's really no need to start \$"SLURM_ARRAY_TASK_ID" at $1$, but if that's 
+    what we've been doing then I'll leave it for consistency.
+    That is, we could have submitted the job array analogous to \\
+      \verb|   sbatch --array=0-8%4 foo.sh| \\
+    in which case the first index would have been $0$.
+\end{enumerate}
+
+
+
+
+
+
+
+
+\begin{verbatim}
+#!/bin/bash
+## This job is designed to be submitted by an array batch submission
+## Here's the command:
+## sbatch --array=1-NPOP*SEEDS%max --export=ALL,(variables) AraSimCall_Array.sh
+#SBATCH -A PAS1960
+#SBATCH -t 18:00:00
+#SBATCH -N 1
+#SBATCH -n 8
+#SBATCH --output=/fs/ess/PAS1960/BiconeEvolutionOSC/BiconeEvolution/current...
+#SBATCH --error=/fs/ess/PAS1960/BiconeEvolutionOSC/BiconeEvolution/current...
+
+source /fs/ess/PAS1960/BiconeEvolutionOSC/new_root/new_root_setup.sh
+cd $AraSimDir
+
+num=$(($((${SLURM_ARRAY_TASK_ID}-1))/${Seeds}+1))
+seed=$(($((${SLURM_ARRAY_TASK_ID}-1))%${Seeds}+1))
+
+echo a_${num}_${seed}.txt
+chmod -R 777 $AraSimDir/outputs/
+./AraSim setup.txt \
+ ${SLURM_ARRAY_TASK_ID} $TMPDIR a_${num}.txt > \
+ $TMPDIR/AraOut_${gen}_${num}_${seed}.txt 
+
+cd $TMPDIR
+echo "Let's see what's in TMPDIR:"
+ls -alrt 
+
+echo $gen > $TMPDIR/${num}_${seed}.txt
+echo $num >> $TMPDIR/${num}_${seed}.txt
+echo $seed >> $TMPDIR/${num}_${seed}.txt
+
+mv AraOut.setup.txt.run${SLURM_ARRAY_TASK_ID}.root\
+ $WorkingDir/Antenna_Performance_Metric/AraOut_${gen}_${num}_${seed}.root
+mv AraOut_${gen}_${num}_${seed}.txt $WorkingDir/Antenna_Performance_Metric/
+mv ${num}_${seed}.txt $WorkingDir/Run_Outputs/$RunName/AraSimFlags
+
+## This part appears unnecessary now
+: << 'END'
+...
+...
+END
+\end{verbatim}
+
+
+
+
 % June 15
 % June 16
 % June 17
