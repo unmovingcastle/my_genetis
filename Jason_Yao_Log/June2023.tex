@@ -286,26 +286,23 @@ ignored here in the log.
 #!/bin/bash
 ## This job is designed to be submitted by an array batch submission
 ## Here's the command:
-## sbatch --array=1-NPOP*SEEDS%max --export=ALL,(variables) AraSimCall_Array.sh
+## sbatch --array=1-NPOP*SEEDS%max --export=ALL,(variables) AraSimC...
 #SBATCH -A PAS1960
 #SBATCH -t 18:00:00
 #SBATCH -N 1
 #SBATCH -n 8
-#SBATCH --output=/fs/ess/PAS1960/BiconeEvolutionOSC/BiconeEvolution/current...
-#SBATCH --error=/fs/ess/PAS1960/BiconeEvolutionOSC/BiconeEvolution/current...
+#SBATCH --output=/fs/ess/PAS1960/BiconeEvolutionOSC/BiconeEvolution/cur...
+#SBATCH --error=/fs/ess/PAS1960/BiconeEvolutionOSC/BiconeEvolution/cur...
 
 source /fs/ess/PAS1960/BiconeEvolutionOSC/new_root/new_root_setup.sh
 cd $AraSimDir
-
-num=$(($((${SLURM_ARRAY_TASK_ID}-1))/${Seeds}+1))
+num=$(($((${SLURM_ARRAY_TASK_ID}-1))/${Seeds}+1)) 
 seed=$(($((${SLURM_ARRAY_TASK_ID}-1))%${Seeds}+1))
-
 echo a_${num}_${seed}.txt
-chmod -R 777 $AraSimDir/outputs/
-./AraSim setup.txt \
- ${SLURM_ARRAY_TASK_ID} $TMPDIR a_${num}.txt > \
- $TMPDIR/AraOut_${gen}_${num}_${seed}.txt 
 
+chmod -R 777 $AraSimDir/outputs/
+./AraSim setup.txt ${SLURM_ARRAY_TASK_ID} $TMPDIR a_${num}.txt > \
+ $TMPDIR/AraOut_${gen}_${num}_${seed}.txt
 cd $TMPDIR
 echo "Let's see what's in TMPDIR:"
 ls -alrt 
@@ -326,10 +323,40 @@ mv ${num}_${seed}.txt $WorkingDir/Run_Outputs/$RunName/AraSimFlags
 END
 \end{verbatim}
 
-
-
-
 % June 15
+\section{Thu}
+\subsection{Meeting with Julie}
+\begin{enumerate}
+  \item Meeting with Julie today rescheduled to same time tomorrow.
+  \item Finished going through the job submission script; back to "Part_D1"
+  \item Skipping the "DEBUG_MODE" of "Part_D1" for now.
+  \item Changed "line 98 and 99" of "Part_D1" to use \$"WorkingDir" to shorten the lines.
+
+\end{enumerate}
+
+\subsection{AraSim Job Submission Script}
+\begin{enumerate}
+  \item "Seeds" is the number of AraSim jobs of an individual. So "num" on "line 15" is
+    essentially just (ignoring the pesky index issue) "index" divided by "Seeds".
+  \item As an example, consider a task 33 in the array of tasks. Suppose "Seeds" is 8; 
+    that is, for each antenna, we do 8 AraSim runs. Since $33-1=32$ divided by 8 is 4,
+    and then we add one to get $5$, "num" in this case is 5. In other words, task 33 is
+    a task for antenna \textbf{num}ber 5.
+  \item Similarly, right below "num", "seed" refers to the ``seed index'' for that 
+    particular antenna. Continuing with the example above, task 33 will be seed number
+    1 of antenna 5 (start counting from 1, as usual).
+  \item Pretty sure "line 16": \verb|echo a_${num}_${seed}.txt| is
+    unnecessary, and the file name being "echo"ed is probably a typo as well. 
+  \item Line 18 is also extra? Seems like we are not using this directory anymore?
+  \item "Line 19" is likely the line that says ``run AraSim'' (with the appropriate
+    setup and parameters) and then redirecting the output of the run to the (local)
+    scratch space of the cluster, ie. \$"TMPDIR". (see osc documentation regarding 
+    parallel and local scratch space. Basically, "TMPDIR" is the fastest.)
+  \item "Line 26" is like another ``SaveState'' file.
+  \item "Line 30" to "33" move the AraSim output files from the scratch space back to
+    the directories under "GE60".
+\end{enumerate}
+
 % June 16
 % June 17
 % June 18
