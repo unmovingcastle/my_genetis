@@ -5,6 +5,7 @@
 \newcommand\hwnumber{June 2023}
 
 \begin{document}
+\tableofcontents
 
 % June 1
 \section{Thu}
@@ -262,26 +263,8 @@ The following pertains "line 81 \& 82"
 \end{enumerate}
 
 \subsection{AraSim Job Submission Script}
-This is an attempt to understand "AraSimCall_Array.sh". My own edited version of
-the job submission script as attached at the end of this section. Run-on lines
-are mainly just SLURM directives which are unimportant here, so they are
-ignored here in the log.
-\begin{enumerate}
-  \item This is for "line 15". 
-    There's really no need to start \$"SLURM_ARRAY_TASK_ID" at $1$, but if that's 
-    what we've been doing then I'll leave it for consistency.
-    That is, we could have submitted the job array analogous to \\
-      \verb|   sbatch --array=0-8%4 foo.sh| \\
-    in which case the first index would have been $0$.
-\end{enumerate}
 
-
-
-
-
-
-
-
+\subsubsection{AraSimCall\_Array.sh}
 \begin{verbatim}
 #!/bin/bash
 ## This job is designed to be submitted by an array batch submission
@@ -323,18 +306,24 @@ mv ${num}_${seed}.txt $WorkingDir/Run_Outputs/$RunName/AraSimFlags
 END
 \end{verbatim}
 
-% June 15
-\section{Thu}
-\subsection{Meeting with Julie}
+\subsubsection{AraSimCall\_Array.sh: my attempt}
+This is an attempt to understand "AraSimCall_Array.sh". My own edited version of
+the job submission script as attached at the end of this section. Run-on lines
+are mainly just SLURM directives which are unimportant here, so they are
+ignored here in the log.
 \begin{enumerate}
-  \item Meeting with Julie today rescheduled to same time tomorrow.
-  \item Finished going through the job submission script; back to "Part_D1"
-  \item Skipping the "DEBUG_MODE" of "Part_D1" for now.
-  \item Changed "line 98 and 99" of "Part_D1" to use \$"WorkingDir" to shorten the lines.
-
+  \item This is for "line 15". 
+    There's really no need to start \$"SLURM_ARRAY_TASK_ID" at $1$, but if that's 
+    what we've been doing then I'll leave it for consistency.
+    That is, we could have submitted the job array analogous to \\
+      \verb|   sbatch --array=0-8%4 foo.sh| \\
+    in which case the first index would have been $0$.
 \end{enumerate}
 
+% June 15
+\section{Thu}
 \subsection{AraSim Job Submission Script}
+\subsubsection{AraSimCall\_Array.sh: my attempt}
 \begin{enumerate}
   \item "Seeds" is the number of AraSim jobs of an individual. So "num" on "line 15" is
     essentially just (ignoring the pesky index issue) "index" divided by "Seeds".
@@ -357,12 +346,33 @@ END
     the directories under "GE60".
 \end{enumerate}
 
+\subsection{Meeting with Julie}
+\begin{enumerate}
+  \item Meeting with Julie today rescheduled to same time tomorrow.
+  \item Finished going through the job submission script; back to "Part_D1"
+  \item Skipping the "DEBUG_MODE" of "Part_D1" for now.
+  \item Changed "line 98 and 99" of "Part_D1" to use \$"WorkingDir" to shorten the lines.
+\end{enumerate}
+
+
 % June 16
 \section{Fri}
-\subsection{Meeting with Julie}
-Notes from today's meeting
+\subsection{Birefringence Resources from Justin}
+Putting these here because apparently Slack hides messages older than 90 days. Boo.
 \begin{enumerate}
-  \item hpol -- I will probably be using AraSim as is without having to modify its code.
+  \item Amy's paper: \url{https://arxiv.org/abs/2110.09015}
+  \item Paper by a collaboration member who studies the birefringence in ice:
+    \url{https://arxiv.org/abs/1910.01471}
+  \item ``[A] decent paper on the theory, but it's a little math heavy'':\\
+    \url{https://link.springer.com/article/10.1007/s00371-011-0619-2}\\
+    \url{https://arxiv.org/abs/2110.09015}\\
+    \url{https://arxiv.org/abs/1910.01471}
+\end{enumerate}
+
+\subsection{Meeting with Julie}
+\subsubsection{Notes from today's meeting}
+\begin{enumerate}
+  \item hpol -- I will probably be using AraSim as is, without having to modify its code.
   \item Dylan built the PUEO software by modifying PAEA; Julie had a to-do list
     of instruction for him to do it which she will modify and send to me.
   \item Birefringence -- Julie said that it sounds like what Amy wants is for hpol to be
@@ -377,14 +387,28 @@ Notes from today's meeting
     (longer lifetime). We don't see electrons either because they just get reabsorbed
     immediately into the ice atoms. (Consequently, muons produce tracks whereas
     the other two create spheres)
-  \item Julie recommends Dick, Chris Hirata, and Antonio Bovea for candidacy committee.
+  \item Julie recommends Dick, Chris Hirata, and Antonio Boveia for candidacy committee.
 \end{enumerate}
-Second pass of the Loop continued:
+
+\subsubsection{Second pass of the Loop continued}
 \begin{enumerate}
   \item Continuing with "Part_D1_Array.sh"
   \item As reported a few weeks ago on Slack, "line 116" will never be executed.
     Alex set the impossible condition to keep the code, but I'll just comment it out.
   \item finished "Part_D1", moving on to "Part_D2".
+\end{enumerate}
+
+\subsection{Bash}
+\begin{enumerate}
+  \item be sure not to include whitespace when assigning values to variables in bash.
+    For instance, "a=2" is correct but not "a = 3".
+  \item Example usage of "expr": \verb|totPop=$( expr $NPOP \* $Seeds )|
+    \textit{Note the whitespace! It matters here whether or not there are spaces around
+    the multiplication operator}.
+  \item But what is the difference between "expr" and simply using double parentheses?
+    For instanace \verb|totPop=$(( $NPOP * $Seeds ))|
+    (in this case it seems like bash doesn't care as much about the whitespace around
+    "*")?
 \end{enumerate}
 
 % June 17
