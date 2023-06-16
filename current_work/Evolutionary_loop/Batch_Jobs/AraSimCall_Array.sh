@@ -9,49 +9,28 @@
 #SBATCH --output=/fs/ess/PAS1960/BiconeEvolutionOSC/BiconeEvolution/current_antenna_evo_build/XF_Loop/Evolutionary_Loop/Run_Outputs/%x/AraSim_Outputs/AraSim_%a.output
 #SBATCH --error=/fs/ess/PAS1960/BiconeEvolutionOSC/BiconeEvolution/current_antenna_evo_build/XF_Loop/Evolutionary_Loop/Run_Outputs/%x/AraSim_Errors/AraSim_%a.error
 
-#variables
-#gen=$1
-#WorkingDir=$2
-#RunName=$3
-
-#cd into the AraSim directory
-#cd /fs/ess/PAS1960/BiconeEvolutionOSC/AraSim/
-
 source /fs/ess/PAS1960/BiconeEvolutionOSC/new_root/new_root_setup.sh
-
 cd $AraSimDir
-
-#this is the command in the XF script although I don't know if we can pass in variables from that script
-#into this one like i and WorkingDir
-#if in the job call we have 
-
-num=$(($((${SLURM_ARRAY_TASK_ID}-1))/${Seeds}+1))
+num=$(($((${SLURM_ARRAY_TASK_ID}-1))/${Seeds}+1)) # num denotes antenna number; Jason 061523
 seed=$(($((${SLURM_ARRAY_TASK_ID}-1))%${Seeds}+1))
-
 echo a_${num}_${seed}.txt
-#chmod -R 777 /fs/ess/PAS1960/BiconeEvolutionOSC/AraSim/outputs/
-chmod -R 777 $AraSimDir/outputs/
 
-./AraSim setup.txt ${SLURM_ARRAY_TASK_ID} $TMPDIR a_${num}.txt > $TMPDIR/AraOut_${gen}_${num}_${seed}.txt 
+chmod -R 777 $AraSimDir/outputs/
+./AraSim setup.txt ${SLURM_ARRAY_TASK_ID} $TMPDIR a_${num}.txt > \
+ $TMPDIR/AraOut_${gen}_${num}_${seed}.txt 
+
 cd $TMPDIR
 echo "Let's see what's in TMPDIR:"
 ls -alrt 
 
-mv AraOut.setup.txt.run${SLURM_ARRAY_TASK_ID}.root $WorkingDir/Antenna_Performance_Metric/AraOut_${gen}_${num}_${seed}.root
-mv AraOut_${gen}_${num}_${seed}.txt $WorkingDir/Antenna_Performance_Metric/
-## We can call Dennis' script here
-#mv * $WorkingDir/Antenna_Performance_Metric
-
-#cd $WorkingDir/Run_Outputs/$RunName/AraSimFlags
-#echo ${num}_${Seeds} > ${num}_${Seeds}.txt
 echo $gen > $TMPDIR/${num}_${seed}.txt
 echo $num >> $TMPDIR/${num}_${seed}.txt
 echo $seed >> $TMPDIR/${num}_${seed}.txt
-cd $TMPDIR
 
-echo "Let's see what's in TMPDIR:"
-ls -alrt
-
+# Moving stuff from scratch space back to GE60; Jason 061523
+mv AraOut.setup.txt.run${SLURM_ARRAY_TASK_ID}.root\
+ $WorkingDir/Antenna_Performance_Metric/AraOut_${gen}_${num}_${seed}.root
+mv AraOut_${gen}_${num}_${seed}.txt $WorkingDir/Antenna_Performance_Metric/
 mv ${num}_${seed}.txt $WorkingDir/Run_Outputs/$RunName/AraSimFlags
 
 ## This part appears unnecessary now

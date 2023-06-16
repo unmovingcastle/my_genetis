@@ -246,23 +246,26 @@ do
 	## Part D1 ##
 	if [ $state -eq 5 ]
 	then
-	        #The reason here why Part_D1.sh is run after teh save state is changed is because all Part_D1 does is submit AraSim jobs which are their own jobs and run on their own time
-		#We need to make a new AraSim job script which takes the runname as a flag 
-		#./Loop_Parts/Part_D/Part_D1_AraSeed.sh $gen $NPOP $WorkingDir $AraSimExec $exp $NNT $RunName $Seeds $DEBUG_MODE
-		#./Loop_Parts/Part_D/Part_D1_AraSeed_Notif.sh 
-		./Loop_Parts/Part_D/Part_D1_Array.sh $gen $NPOP $WorkingDir $AraSimExec $exp $NNT $RunName $Seeds $DEBUG_MODE
+		# The reason why Part_D1.sh is run after the save state is changed is because all Part_D1 
+		# does is submit AraSim jobs which are their own jobs and run on their own time
+		# We need to make a new AraSim job script which takes the runname as a flag 
+		# ./Loop_Parts/Part_D/Part_D1_AraSeed.sh $gen $NPOP $WorkingDir $AraSimExec $exp \
+		# 	$NNT $RunName $Seeds $DEBUG_MODE
+		# ./Loop_Parts/Part_D/Part_D1_AraSeed_Notif.sh 
+		./Loop_Parts/Part_D/Part_D1_Array.sh $gen $NPOP $WorkingDir $AraSimExec $exp \
+			$NNT $RunName $Seeds $DEBUG_MODE
+
 		state=6
-
 		./SaveState_Prototype.sh $gen $state $RunName $indiv
-
 	fi
 
 	## Part D2 ##
 	if [ $state -eq 6 ]
 	then
-		#./Part_D2_AraSeed.sh 
+		# ./Part_D2_AraSeed.sh 
 		./Loop_Parts/Part_D/Part_D2_Array.sh $gen $NPOP $WorkingDir $RunName $Seeds $AraSimExec
-		#./Loop_Parts/Part_D/Part_D2_AraSeed_Notif.sh $gen $NPOP $WorkingDir $RunName $Seeds $AraSimExec
+		# ./Loop_Parts/Part_D/Part_D2_AraSeed_Notif.sh \
+		#  $gen $NPOP $WorkingDir $RunName $Seeds $AraSimExec
 		state=7
 		./SaveState_Prototype.sh $gen $state $RunName $indiv
 
