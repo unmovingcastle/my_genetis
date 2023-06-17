@@ -30,8 +30,9 @@
 \section{Sat}
 \subsection{Meeting with Julie}
 \begin{enumerate}
-  \item The meeting this Wednesday was cancelled. In the meantime, Julie suggests reading
-    the Appendix and her candidacy paper. I have largely finished reading the relevant
+  \item The meeting this Wednesday was cancelled. In the meantime, Julie
+    suggests reading the Appendix and her candidacy paper.
+    I have largely finished reading the relevant
     part of the Appendix, so the rest of this week will most likely be spent reading
     the candidacy paper and checking out the "Loop Parts" in more detail.
   \item Part B1 second pass: will also check out the job submission script 
@@ -412,6 +413,97 @@ Putting these here because apparently Slack hides messages older than 90 days. B
 \end{enumerate}
 
 % June 17
+\section{Sat}
+\subsection{Meeting with Julie}
+\subsubsection{Part\_D2\_Array.sh Second Pass}
+\begin{enumerate}
+  \item Might be able to shorten "Line 22":
+    \begin{verbatim}
+  nFiles=$(ls -1 --file-type ../AraSimConfirmed | grep -v '/$' | wc -l)
+    \end{verbatim}
+    using just "ls | wc -l". Will test this tomorrow.
+  \item Option "1"(one) of "ls" ``[forces] output to be one entry per line''
+  \item \texttt{--file-typ} makes it so that all the directories end with a "/", and
+    soft links end with a "@", etc. \url{https://stackoverflow.com/questions/
+    51952975/what-is-the-purpose-of-file-type-in-ls-command}
+    Files don't have anything attached.
+  \item Thus, as an example, inside \$"WorkingDir/Run_Outputs/2023_02_20_Symmetric_Run",
+    if we issue "ls" we get
+    \begin{verbatim}
+2023_02_20_Symmetric_Run.xf  Fitness_Scores_RG.png  uan_files
+Antenna_Images               FScorePlot2D.png       Veffectives_RG.png
+AraOut                       Gain_Plots             Veff_plot.png
+AraSimConfirmed              Generation_Data        Violin_Plot.png
+AraSim_Errors                GPUFlags               XF_Errors
+AraSimFlags                  Root_Files             XFGPUOutputs
+AraSim_Outputs               runDate.txt            XF_Outputs
+Evolution_Plots              run_details.txt
+    \end{verbatim}
+    and with "ls -1" we have
+    \begin{verbatim}
+2023_02_20_Symmetric_Run.xf
+Antenna_Images
+AraOut
+AraSimConfirmed
+AraSim_Errors
+AraSimFlags
+AraSim_Outputs
+Evolution_Plots
+Fitness_Scores_RG.png
+FScorePlot2D.png
+Gain_Plots
+Generation_Data
+GPUFlags
+Root_Files
+runDate.txt
+run_details.txt
+uan_files
+Veffectives_RG.png
+Veff_plot.png
+Violin_Plot.png
+XF_Errors
+XFGPUOutputs
+XF_Outputs
+    \end{verbatim}
+    Lastly, with "ls -1 --file-type" (on OSC, not on Mac), we get
+    \begin{verbatim}
+2023_02_20_Symmetric_Run.xf/
+Antenna_Images/
+AraOut/
+AraSimConfirmed/
+AraSim_Errors/
+AraSimFlags/
+AraSim_Outputs/
+Evolution_Plots/
+Fitness_Scores_RG.png
+FScorePlot2D.png
+Gain_Plots/
+Generation_Data/
+GPUFlags/
+Root_Files/
+runDate.txt
+run_details.txt
+uan_files/
+Veffectives_RG.png
+Veff_plot.png
+Violin_Plot.png
+XF_Errors/
+XFGPUOutputs/
+XF_Outputs/
+    \end{verbatim}
+  \item option "v" of "grep" is ``invert-match'', which acts like a "not"-gate. It 
+    selectes all entries that do not match. In this case we are trying to match
+    all entries that has a forward slash "/" right before the end-of-line
+    character \verb|$|; that is, we are trying to match all the directories.
+    And then, "v" makes sure that we select everything that is not a directory,
+    ie. files. Finally, we pipe it to "wc -l" to count as usual.
+  \item I'll check with Alex to see if we really need to be this careful, because in \\
+    "Part_B_GPU_job2_asym_array.sh" "line 56" it seems like we decided to simply use \\
+    "ls | wc -l", which is much cleaner.
+    
+
+\end{enumerate}
+
 % June 18
 % June 19
 % June 20
