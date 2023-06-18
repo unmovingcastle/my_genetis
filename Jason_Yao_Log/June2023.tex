@@ -500,11 +500,26 @@ XF_Outputs/
   \item I'll check with Alex to see if we really need to be this careful, because in \\
     "Part_B_GPU_job2_asym_array.sh" "line 56" it seems like we decided to simply use \\
     "ls | wc -l", which is much cleaner.
-    
-
 \end{enumerate}
 
 % June 18
+\section{Sun}
+\subsection{Meeting with Julie}
+\subsubsection{Part\_D2\_Array.sh Second Pass Continued}
+\begin{enumerate}
+  \item Regarding the "for" loop around "line 28", consider the following script:
+    \begin{verbatim}
+#!/bin/bash
+cd ~/Desktop/temp
+
+for file in *
+do 
+  echo $file
+done
+    \end{verbatim}
+    If there is \textit{no} file inside "temp/", then the output would be "*". This is
+    what the comment around "line 32" is talking about.
+\end{enumerate}
 % June 19
 % June 20
 % June 21
