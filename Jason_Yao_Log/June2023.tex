@@ -520,8 +520,44 @@ done
     If there is \textit{no} file inside "temp/", then the output would be "*". This is
     what the comment around "line 32" is talking about.
 \end{enumerate}
+
 % June 19
+\section{Mon}
+\subsection{Bash}
+\begin{enumerate}
+  \item We can break a line inside double quotes. For example, the following is legal
+    \begin{verbatim}
+#!/bin/bash
+pat="/users/PAS2137/unmovingcastle\
+/temp"
+out_name=$pat/%x.out
+err_name=$pat/%x.error
+sbatch --job-name=whatever --output=$out_name --error=$err_name a.sh
+    \end{verbatim}
+  \item Normally we don't even need the backslash if we are just "echo"ing the stuff
+    that is inside the double quotes. But if we are going to access the path later with
+    \$"pat" then it appears that the backslash \textit{is} necessary.
+  \item "wait" waits for a process to finish;
+    "sleep" sleeps for a certain amount of seconds.
+\end{enumerate}
+\subsection{Meeting with Julie}
+\subsubsection{Part\_D2\_Array.sh Second Pass Continued}
+\begin{enumerate}
+  \item Used \$"WorkingDir" to shorten "line 60" \& "61"
+  \item The final "if" block is effectively a comment, so I'll comment it out.
+  \item Finsihed "Part_D2_Array.sh"
+\end{enumerate}
+
 % June 20
+\section{Tue}
+\subsection{Meeting with Julie}
+\subsubsection{Part\_E\_Asym.sh second pass}
+\begin{enumerate}
+  \item The curly braces around \texttt{\$10}, \texttt{\$11} and \texttt{\$12}
+    are \textit{necessary}.
+\end{enumerate}
+
+
 % June 21
 % June 22
 % June 23
