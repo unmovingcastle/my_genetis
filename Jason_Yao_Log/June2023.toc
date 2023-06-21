@@ -58,3 +58,6 @@
 \contentsline {section}{\numberline {20}Tue}{24}{section.20}%
 \contentsline {subsection}{\numberline {A}Meeting with Julie}{24}{subsection.20.1}%
 \contentsline {subsubsection}{\numberline {(a)}Part\_E\_Asym.sh second pass}{24}{subsubsection.20.1.1}%
+\contentsline {section}{\numberline {21}Wed}{25}{section.21}%
+\contentsline {subsection}{\numberline {A}Meeing with Julie}{25}{subsection.21.1}%
+\contentsline {subsubsection}{\numberline {(a)}Part\_E\_Asym.sh second pass continued}{25}{subsubsection.21.1.1}%

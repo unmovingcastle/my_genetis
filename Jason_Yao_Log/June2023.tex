@@ -557,8 +557,25 @@ sbatch --job-name=whatever --output=$out_name --error=$err_name a.sh
     are \textit{necessary}.
 \end{enumerate}
 
-
 % June 21
+\section{Wed}
+\subsection{Meeing with Julie}
+\subsubsection{Part\_E\_Asym.sh second pass continued}
+\begin{enumerate}
+  \item To understand the "for" block around "line 37", consider the following example
+    \begin{verbatim}
+for i in `seq 1 4`
+do
+  InputFiles="${InputFiles}out${i}.txt "
+done
+echo $InputFiles
+    \end{verbatim}
+
+  \item The output is \\
+    "out1.txt out2.txt out3.txt out4.txt"
+  \item \textbf{TODO:} haven't looked into "fitnessFunction_ARA.cpp" yet.
+\end{enumerate}
+
 % June 22
 % June 23
 % June 24
