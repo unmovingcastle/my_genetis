@@ -574,9 +574,38 @@ echo $InputFiles
   \item The output is \\
     "out1.txt out2.txt out3.txt out4.txt"
   \item \textbf{TODO:} haven't looked into "fitnessFunction_ARA.cpp" yet.
+  \item \textit{Why is Veff\_Plotting.py still in this part and not moved to} "Part_F"?
+    ("line 95")
 \end{enumerate}
 
 % June 22
+\section{Thu}
+\subsection{Meeting with Julie}
+\begin{enumerate}
+  \item Meeting with Julie today moved to tomorrow.
+\end{enumerate}
+\subsubsection{Part\_E\_Asym.sh second pass continued}
+\begin{enumerate}
+  \item Commented out "line 109": "cd Antenna_Performance_Metric" because the
+    next 25 lines have already been commented out, so there's no need.
+  \item \textbf{TODO:} look into "Data_Generators/gensData_asym.py"
+  \item Commented out "line 144": "cd" \$"WorkingDir/Antenna_Performance_Metric" because
+    the subsequent command have already been commented out.
+  \item \textbf{Be very careful with trailing whitespace when using backslash}
+    \verb|\| to break a line. For example consider "line 160"
+    \begin{verbatim}
+cp AraOut_${gen}_${i}_${j}.txt \
+  $WorkingDir/Run_Outputs/$RunName/AraOut/AraOut_${gen}/AraOut...
+    \end{verbatim}
+    If we add a space after \verb|\|, notice that the syntax highlighting color
+    changes in "vscode". This \textit{will} be a bug, because what this line does is
+    duplicating the source file and then naming the target "blank" (that is, the target
+    file name is simply a whitespace, because the backslash in this case is used to
+    escape the white space.)
+  \item Went through "Part_E"; looking into the python and "c++" scripts called by
+    this part.
+\end{enumerate}
+
 % June 23
 % June 24
 % June 25
