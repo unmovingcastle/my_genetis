@@ -53,7 +53,7 @@ ELITE=0				## Elite function on/off (1/0)
 ##############################################################################################
 
 
-########  INITIALIZATION OF DIRECTORIES  #####################################################
+######## INITIALIZATION OF DIRECTORIES #####################################################
 BEOSC=/fs/ess/PAS1960/BiconeEvolutionOSC
 # The following is where the loop is; on OSC this is 
 # /fs/ess/PAS1960/BiconeEvolutionOSC/BiconeEvolution/current_antenna_evo_build_XF_Loop/Evolutionary_Loop
@@ -268,7 +268,6 @@ do
 		#  $gen $NPOP $WorkingDir $RunName $Seeds $AraSimExec
 		state=7
 		./SaveState_Prototype.sh $gen $state $RunName $indiv
-
 	fi
 
 	## Part E ##
@@ -279,13 +278,14 @@ do
 	then
 		if [ $CURVED -eq 0 ]	# Evolve straight sides
 		then
-			./Loop_Parts/Part_E/Part_E_Asym.sh $gen $NPOP $WorkingDir $RunName $ScaleFactor $indiv $Seeds $GeoFactor $AraSimExec $XFProj $NSECTIONS $SEPARATION
+			./Loop_Parts/Part_E/Part_E_Asym.sh $gen $NPOP $WorkingDir $RunName $ScaleFactor \ 
+			 $indiv $Seeds $GeoFactor $AraSimExec $XFProj $NSECTIONS $SEPARATION
 		else			# Evolv curved sides
-			./Loop_Parts/Part_E/Part_E_Curved.sh $gen $NPOP $WorkingDir $RunName $ScaleFactor $indiv $Seeds $GeoFactor $AraSimExec $XFProj $NSECTIONS $SEPARATION $CURVED
+			./Loop_Parts/Part_E/Part_E_Curved.sh $gen $NPOP $WorkingDir $RunName $ScaleFactor \ 
+			 $indiv $Seeds $GeoFactor $AraSimExec $XFProj $NSECTIONS $SEPARATION $CURVED
 		fi
 		state=8
 		./SaveState_Prototype.sh $gen $state $RunName $indiv 
-
 	fi
 
 	## Part F ##

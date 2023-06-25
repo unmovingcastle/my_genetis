@@ -1,16 +1,20 @@
-/*	This GA is adapted from CalPoly's hybrid roulette / tournament method to work with Ohio State's loop. 
-	Written by David Liu
-	Revised by Suren Gourapura to accept NPoP on 29 Dec 2018
-	
-	Everything is carefully commented, so things should hopefully be clear.
-	
+/*
+This GA is adapted from CalPoly's hybrid roulette/ tournament method to work with
+Ohio State's loop. 
+
+Programmer: David Liu
+						Suren Gourapura
+						Jason Yao (yao.966@osu.edu)
+
+Revisiion history:
+	12/29/2018	Revised by Suren Gourapura to accept NPoP 
+	06/23/2023	Revised by Jason Yao: fixed typos in line 72
+
+Notes: 
+	* Everything is carefully commented, so things should hopefully be clear.
+	* Compile using: g++ -std=c++11 roulette_algorithm_cut_test.cpp -o roulette_algorithm.exe
+	* Call format: ./a.out start/cont NPOP 1 repro_no cross_no ratio_int
 */
-
-// Compile using: g++ -std=c++11 roulette_algorithm_cut_test.cpp -o roulette_algorithm.exe
-
-// call format: ./a.out start/cont NPOP 1 repro_no cross_no ratio_int
-
-
 
 #include <time.h>
 #include <math.h>
@@ -62,8 +66,6 @@ void roulette(vector<vector<vector<float>>> &varInput, vector<vector<vector<floa
 	parents = tensor to store the variables used to generate an individual
 	fitness = fitness scores
 */
-
-
 void tournament(vector<vector<vector<float> > > &varInput, vector<vector<vector<float> > > &varOutput, vector<float> &fitness, default_random_engine& random_sequence);
 
 // Debolt, Patton, Sipe: New modular functions 10/9/2020
