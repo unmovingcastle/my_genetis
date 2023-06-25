@@ -607,8 +607,59 @@ cp AraOut_${gen}_${i}_${j}.txt \
 \end{enumerate}
 
 % June 23
+\section{Fri}
+\subsection{Meeting with Julie}
+\subsubsection{notes from today's meeting}
+\begin{enumerate}
+  \item Contact Ryan and Alex to see what has been done on the hpol GA.
+  \item Ask what genes to evolve for the initial check.
+  \item Are we planning on making an entirely new software package for hpol or
+    do we want it to be an "if-else" swtich in the "vpol" software.
+  \item Contact Alex and Nicholas to see what they have been doing related to "XF".
+  \item Check the instructions at
+    \url{https://docs.google.com/document/d/
+    1lViJQt9CQBYx5mOYceYGyqeWISUxZRO0ziyPo5tp_gE/edit}.
+    can ask Alex or Julie.
+  \item Go to "step 1" of the instruction.
+\end{enumerate}
+\subsubsection{Part\_A second pass}
+\begin{enumerate}
+  \item \st{Actually I accidentally skipped Part\_A when I started the second
+      pass, so I will finish going though this again before I look into the GA}.
+  \item "Line 25": the condition can never be true because "NSECTIONS" is 
+    either 1 or 2 but never 0; \textbf{TODO:} check the above with Alex.
+  \item Looking into "Latest_Asym_GA.cpp" now; the plan is eventually to
+    convert the GA to python.
+\end{enumerate}
+
+\subsubsection{Latest\_Asym\_GA.cpp}
+\begin{enumerate}
+  \item "Line 72" function header for "new_tournament" contains a typo.
+\end{enumerate}
+
 % June 24
+% Took a day off
+\newpage
+\setcounter{section}{24}
+
 % June 25
+\section{Sun}
+\subsection{Meeting with Julie}
+\subsubsection{Latest\_Asym\_GA.cpp}
+\begin{enumerate}
+  \item Created "Latest_Asym_GA.py" under \$"WorkingDIr/GA/". This is an attempt to
+    translate the c++ program into python. 
+  \item Neat introduction on c++ "<vector>":\\
+    \url{https://shengyu7697.github.io/std-vector/} (in traditional Chinese.)
+  \item Passing by value and passing by reference:\\
+    \url{https://www.geeksforgeeks.org/passing-vector-function-cpp/}
+  \item Pointer vs. Reference in c++:\\
+    \url{https://www.geeksforgeeks.org/pointers-vs-references-cpp/}
+  \item Appending "f" to a number makes it a float; otherwise, it is a double.
+    So to properly declare a float variable, we write, for instnace: \\
+    "float a = 2.0f"
+  \item Mostly went through the function declarations and global variables 
+\end{enumerate}
 % June 26
 % June 27
 % June 28
