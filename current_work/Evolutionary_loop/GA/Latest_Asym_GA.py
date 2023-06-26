@@ -15,6 +15,8 @@
 #
 ######################################################################################
 import numpy as np
+import random
+import argparse
 
 # note: the cpp-version passes a tensor and a vector by reference.
 # Inputs for function dataRead: 
@@ -56,6 +58,7 @@ def trial_mutation():
 #####################################################################################
 # GLOBAL VARIABLES
 ######################################################################################
+
 minimum_frequency = 0.08333
 maximum_frequency = 1.0667
 freq_step = 0.01667
@@ -91,3 +94,31 @@ min_separation = 2.5
 
 REPRODUCTION_PERCENT = 0.1
 CROSSOVER_PERCENT = 0.7
+
+#####################################################################################
+# MAIN FUNCTION
+######################################################################################
+
+# Note: default seed is time
+# random.seed(1) # for debugging
+# usage: random.random()
+
+# TODO: check if this file is actually needed
+# with open("../Generation_Data/generators.csv", "w+") as gencsv:
+#   gencsv.write("hello world")
+
+parser = argparse.ArgumentParser()
+parser.add_argument("start_cont", help="null", type=str)
+parser.add_argument("NPOP", help="null", type=int)
+parser.add_argument("GEOSCALE_FACTOR", help="null", type=int)
+g = parser.parse_args()
+
+
+
+
+
+
+
+
+
+
