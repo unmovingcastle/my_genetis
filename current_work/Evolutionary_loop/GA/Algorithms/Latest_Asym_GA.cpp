@@ -363,109 +363,112 @@ int main(int argc, char const *argv[])
 	const float TOURNEY_PROPORTION = (atoi(argv[6]))/10.0;
 
 	while(crossover_no%2 !=0)
-	  {
-	    crossover_no = crossover_no-1;
-	  }
+	{
+		crossover_no = crossover_no - 1;
+	}
 	int pool_size = .07*varOutput.size();
 	if(pool_size == 0)
-	  {
-	    pool_size=1;
-	  }
+	{
+		pool_size = 1;
+	}
 	freqVector[0] = MINIMUM_FREQUENCY;
 	
 	for(int i=1; i<freq_coeffs; i++)
-	  {
+	{
 		freqVector[i] = MINIMUM_FREQUENCY + (FREQ_STEP * i);
 	}
-	
-    	// Read in input arguments and parse in data from files
+
+			// Read in input arguments and parse in data from files
 	
 	cout << "Bicone algorithm initialized." << endl;
 	cout << argc << " arguments" << endl;
-    	if(argc != 7)
-	  {cout << "Error: Usage. Specify start or cont, as well as NPOP (EX: start 10)." << endl << "Form: start/cont NPOP 1 repro_no cross_no ratioT/R" << endl;} 
-    	else
-    	{
-      		if(string(argv[1]) == "start")
+	if (argc != 7)
+	{
+		cout << "Error: Usage. Specify start or cont, as well as NPOP (EX: start 10)." << endl
+		<< "Form: start/cont NPOP 1 repro_no cross_no ratioT/R" << endl;
+	}
+	else
+	{
+		if (string(argv[1]) == "start")
 		{
 			/*
 				These loops should generate a random number from a normalized distribution with mean 0.5 and sigma 0.25
 				to populate every entry in our matrix that we're using. Currently, that's only a 1x2 vector, but later
 				it could be a lot bigger.
 				Sample:
-			
+
 				Current:
-			
+
 				r r 0 0 0 ... 0
 				0 0 0 0 0 ... 0
 				.             .
 				.             .
 				.             .
 				0 0 0 0 0 ... 0
-			
+
 				My thought process currently is each row represents sections of the antenna (to accommodate weird shapes)
 				and then each column represents a specific variable in that section (currently just length and radius)
 			*/
-		  // seession with kai (Debolt 10/27/2020) normal dist instead of uniform???
-		        std::uniform_real_distribution <float> distribution_radius(0, max_radius);   //INITIAL_MEAN_C1_G1, INITIAL_STD_DVN_C1_G1);
-			std::uniform_real_distribution <float> distribution_length(min_length, max_length); //INITIAL_MEAN_C1_G2, INITIAL_STD_DVN_C1_G2);
-			std::uniform_real_distribution <float> distribution_angle(0, max_theta); //INITIAL_MEAN_C1_G3, INITIAL_STD_DVN_C1_G3);
+			// seession with kai (Debolt 10/27/2020) normal dist instead of uniform???
+			std::uniform_real_distribution<float> distribution_radius(0, max_radius);					 // INITIAL_MEAN_C1_G1, INITIAL_STD_DVN_C1_G1);
+			std::uniform_real_distribution<float> distribution_length(min_length, max_length); // INITIAL_MEAN_C1_G2, INITIAL_STD_DVN_C1_G2);
+			std::uniform_real_distribution<float> distribution_angle(0, max_theta);						 // INITIAL_MEAN_C1_G3, INITIAL_STD_DVN_C1_G3);
 			float limit = 7.5;
-			for(int i=0;i<NPOP;i++)
+			for (int i = 0; i < NPOP; i++)
 			{
-				for(int j=0;j<NSECTIONS;j++)
+				for (int j = 0; j < NSECTIONS; j++)
 				{
-					for(int k=0;k<NVARS;k++)
+					for (int k = 0; k < NVARS; k++)
 					{
 						if (k == 0)
 						{
 							float r = distribution_radius(generator);
-								// write generator to a file
-								generator_file << generator << endl;	
-							while(r<=0) // We don't accept negative or zero values
+							// write generator to a file
+							generator_file << generator << endl;
+							while (r <= 0) // We don't accept negative or zero values
 							{
 								r = distribution_radius(generator);
 								generator_file << generator << endl;
 							}
-							varOutput[i][j][k]= r;
+							varOutput[i][j][k] = r;
 						}
-					
+
 						// EDIT LOCATION FOR CUT
 						else if (k == 1)
 						{
 							float l = distribution_length(generator);
 							generator_file << generator << endl;
-							while(l<37.5) // now we don't accept below 37.5 cm
+							while (l < 37.5) // now we don't accept below 37.5 cm
 							{
 								l = distribution_length(generator);
 								generator_file << generator << endl;
 							}
-						
-							varOutput[i][j][k]= l;
-						}	
+
+							varOutput[i][j][k] = l;
+						}
 
 						else if (k == 2)
 						{
 							float a = distribution_angle(generator);
-							generator_file << generator << endl;	
-							while(a<0.0) // We don't accept negative values
+							generator_file << generator << endl;
+							while (a < 0.0) // We don't accept negative values
 							{
 								a = distribution_angle(generator);
 								generator_file << generator << endl;
 							}
-						varOutput[i][j][k]= a;
-						}	
+							varOutput[i][j][k] = a;
+						}
 					}
-					if(varOutput[i][j][0]+varOutput[i][j][1]*tan(varOutput[i][j][2]) > max_outer_radius)
-					  {
-					    j = j-1;
-					  }
+					if (varOutput[i][j][0] + varOutput[i][j][1] * tan(varOutput[i][j][2]) > max_outer_radius)
+					{
+						j = j - 1;
+					}
 				}
 			}
-			
+
 			/* For the time being we comment this out. Need to figure out how to make every gene
 			 * counted with a different starting seed later.
-		
+
 			for(int i=0;i<NPOP;i++)
 			{
 				for(int j=0;j<NSECTIONS;j++)
@@ -473,81 +476,81 @@ int main(int argc, char const *argv[])
 					for(int k=0;k<NVARS;k++)
 					{
 						float r = distribution(generator);
-					
+
 						while(r<=0) // We don't accept negative or zero values
 							r = distribution(generator);
-					
+
 						varOutput[i][j][k]= r;
 					}
 				}
 			}
 			*/
-		
+
 			// Next up we write to file generationDNA
 			dataWrite(NPOP, varOutput, freq_coeffs, freqVector);
 			double meanTotal = 0.0;
-			for(int i=0; i<NPOP; i++)
-				{
-					meanTotal = meanTotal + varOutput[i][0][1];
-				}
+			for (int i = 0; i < NPOP; i++)
+			{
+				meanTotal = meanTotal + varOutput[i][0][1];
+			}
 			float meanForGridSize = meanTotal / NPOP;
 			/*ofstream datasize;
 			datasize.open("datasize.txt");
 			datasize << meanForGridSize/50.0 << ";";
-			datasize.close();*/	
+			datasize.close();*/
 		}
-		else if(string(argv[1]) == "cont")
+		else if (string(argv[1]) == "cont")
 		{
-			  dataRead(varInput,fitness); // Read in the stuff from previous generation
-			  if (checkConvergence(varInput,fitness) == 1) // We check for convergence. If we've converged then end loop
-			  {
-				  remove("Generation_Data/highfive.txt"); // we delete the old highfive.txt that has a 0 in it
-				  ofstream highfive;
-				  highfive.open("Generation_Data/highfive.txt"); // we create a new highfive.txt that will have a 1 in it
-				  highfive << 1;
-				  highfive.close();
-			  }
-			  else // If no convergence, generate a new generation and write a new generationDNA.csv
-			  {
-			    // code block prior to modular functions. Revised 10/9/2020
-			    /*
-				  roulette(varInput,varOutput,fitness,generator);
-				  cout << "Roulette complete." << endl;
-				  tournament(varInput,varOutput,fitness,generator);
-				  cout << "Tournament complete." << endl;
-				  dataWrite(NPOP, varOutput, freq_coeffs, freqVector);
-				  double meanTotal = 0.0;
-				  for(int i=0; i<NPOP; i++)
-				  {
-					  meanTotal = meanTotal + varOutput[i][0][1];
-				  }
-				  float meanForGridSize = meanTotal / NPOP;
-				  ofstream datasize;
-				  datasize.open("datasize.txt");
-				  datasize << meanForGridSize/50.0 << ";";
-				  datasize.close();	
-			    */
-			    const float TOURNEY_PROPORTION = (atoi(argv[6]))/10.1;
-			    const float ROULETTE_PROPORTION = 1.0-TOURNEY_PROPORTION; 
+			dataRead(varInput, fitness);									// Read in the stuff from previous generation
+			if (checkConvergence(varInput, fitness) == 1) // We check for convergence. If we've converged then end loop
+			{
+				remove("Generation_Data/highfive.txt"); // we delete the old highfive.txt that has a 0 in it
+				ofstream highfive;
+				highfive.open("Generation_Data/highfive.txt"); // we create a new highfive.txt that will have a 1 in it
+				highfive << 1;
+				highfive.close();
+			}
+			else // If no convergence, generate a new generation and write a new generationDNA.csv
+			{
+				// code block prior to modular functions. Revised 10/9/2020
+				/*
+				roulette(varInput,varOutput,fitness,generator);
+				cout << "Roulette complete." << endl;
+				tournament(varInput,varOutput,fitness,generator);
+				cout << "Tournament complete." << endl;
+				dataWrite(NPOP, varOutput, freq_coeffs, freqVector);
+				double meanTotal = 0.0;
+				for(int i=0; i<NPOP; i++)
+				{
+					meanTotal = meanTotal + varOutput[i][0][1];
+				}
+				float meanForGridSize = meanTotal / NPOP;
+				ofstream datasize;
+				datasize.open("datasize.txt");
+				datasize << meanForGridSize/50.0 << ";";
+				datasize.close();
+				*/
+				const float TOURNEY_PROPORTION = (atoi(argv[6])) / 10.1;
+				const float ROULETTE_PROPORTION = 1.0 - TOURNEY_PROPORTION;
 
-			    reproduction(varInput, varOutput, fitness, ROULETTE_PROPORTION, TOURNEY_PROPORTION, reproduction_no, pool_size);
-			    crossover(varInput, varOutput, fitness, ROULETTE_PROPORTION, TOURNEY_PROPORTION, crossover_no, pool_size, reproduction_no);
-			    mutation(varOutput, reproduction_no, crossover_no, max_length, max_radius, max_seperation, max_outer_radius);
-			    // do not use:  trial_mutation(varInput, varOutput, reproduction_no, crossover_no, TOURNEY_PROPORTION, ROULETTE_PROPORTION, pool_size, fitness);
-			    cout << NSECTIONS << endl;
-			    dataWrite(NPOP, varOutput, freq_coeffs, freqVector);
-			    double meanTotal = 0.0;
-			    for(int i=0; i<NPOP; i++)
-			      {
-				meanTotal = meanTotal + varOutput[i][0][1];
-			      }
-			    float meanForGridSize = meanTotal / NPOP;
-			    /*ofstream datasize;
-			    datasize.open("datasize.txt");
-			    datasize << meanForGridSize/50.0 << ";";
-			    datasize.close();
-			    */
-			  }
+				reproduction(varInput, varOutput, fitness, ROULETTE_PROPORTION, TOURNEY_PROPORTION, reproduction_no, pool_size);
+				crossover(varInput, varOutput, fitness, ROULETTE_PROPORTION, TOURNEY_PROPORTION, crossover_no, pool_size, reproduction_no);
+				mutation(varOutput, reproduction_no, crossover_no, max_length, max_radius, max_seperation, max_outer_radius);
+				// do not use:  trial_mutation(varInput, varOutput, reproduction_no, crossover_no, TOURNEY_PROPORTION, ROULETTE_PROPORTION, pool_size, fitness);
+				cout << NSECTIONS << endl;
+				dataWrite(NPOP, varOutput, freq_coeffs, freqVector);
+				double meanTotal = 0.0;
+				for (int i = 0; i < NPOP; i++)
+				{
+					meanTotal = meanTotal + varOutput[i][0][1];
+				}
+				float meanForGridSize = meanTotal / NPOP;
+				/*ofstream datasize;
+				datasize.open("datasize.txt");
+				datasize << meanForGridSize/50.0 << ";";
+				datasize.close();
+				*/
+			}
 		}
 	}
 	generator_file.close();

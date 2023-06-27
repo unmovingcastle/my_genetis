@@ -673,6 +673,23 @@ cp AraOut_${gen}_${i}_${j}.txt \
 \end{enumerate}
 
 % June 27
+\section{Tue}
+\subsection{Meeting with Julie}
+\subsubsection{Latest\_Asym\_GA.cpp}
+\begin{enumerate}
+  \item Currently on "line 340", reviewing "<vector>".
+  \item Consider the following:\\
+    "vector<float> fitness (NPOP, 0.0f);"\\
+    The above creates a vector of size "NPOP" and initializes every entry to be "0.0" 
+    ("floats")
+  \item In python, "fitness = np.zeros((a,b))" creates a matrix of size "a" by "b" and
+    initializes the matrix to zeros.
+  \item "np.round" returns a numpy double but simply "round" returns an "int".
+    We can check this with the "type()" function (eg. "type(round(59.5))")
+  \item \textbf{TODO:} Ask Ryan or Alex why we write to "generator.csv"
+  \item \textbf{TODO:} Clean up the inner most loop ("NVAR") tomorrow. The way the 
+    tripple loop is used is kind of ugly.
+\end{enumerate}
 % June 28
 % June 29
 % June 30
