@@ -1,0 +1,83 @@
+\contentsline {section}{\numberline {1}Thu}{4}{section.1}%
+\contentsline {subsection}{\numberline {A}Bash}{4}{subsection.1.1}%
+\contentsline {section}{\numberline {2}Fri}{5}{section.2}%
+\contentsline {section}{\numberline {3}Sat}{6}{section.3}%
+\contentsline {subsection}{\numberline {A}Meeting with Julie}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {B}Regex}{6}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Sun}{7}{section.4}%
+\contentsline {subsection}{\numberline {A}Meeting with Julie}{7}{subsection.4.1}%
+\contentsline {section}{\numberline {5}Mon}{8}{section.5}%
+\contentsline {subsection}{\numberline {A}Meeting with Julie}{8}{subsection.5.1}%
+\contentsline {subsection}{\numberline {B}SLURM}{8}{subsection.5.2}%
+\contentsline {section}{\numberline {6}Tue}{9}{section.6}%
+\contentsline {subsection}{\numberline {A}Meeting with Julie}{9}{subsection.6.1}%
+\contentsline {section}{\numberline {7}Wed}{10}{section.7}%
+\contentsline {subsection}{\numberline {A}Meeting with Julie}{10}{subsection.7.1}%
+\contentsline {subsection}{\numberline {B}Bash}{10}{subsection.7.2}%
+\contentsline {section}{\numberline {8}Thu}{11}{section.8}%
+\contentsline {subsection}{\numberline {A}Meeting with Julie}{11}{subsection.8.1}%
+\contentsline {section}{\numberline {9}Fri}{12}{section.9}%
+\contentsline {subsection}{\numberline {A}Meeting with Julie}{12}{subsection.9.1}%
+\contentsline {subsection}{\numberline {B}Bash}{12}{subsection.9.2}%
+\contentsline {section}{\numberline {10}Sat}{13}{section.10}%
+\contentsline {subsection}{\numberline {A}Meeting with Amy}{13}{subsection.10.1}%
+\contentsline {subsection}{\numberline {B}Python}{13}{subsection.10.2}%
+\contentsline {subsubsection}{\numberline {(a)}XFintoARA.py}{13}{subsubsection.10.2.1}%
+\contentsline {section}{\numberline {12}Mon}{14}{section.12}%
+\contentsline {subsection}{\numberline {A}Python}{14}{subsection.12.1}%
+\contentsline {subsubsection}{\numberline {(a)}XFintoARA.py}{14}{subsubsection.12.1.1}%
+\contentsline {subsubsection}{\numberline {(b)}General}{14}{subsubsection.12.1.2}%
+\contentsline {section}{\numberline {13}Tue}{15}{section.13}%
+\contentsline {subsection}{\numberline {A}Meeting with Julie}{15}{subsection.13.1}%
+\contentsline {subsection}{\numberline {B}Bash}{15}{subsection.13.2}%
+\contentsline {section}{\numberline {14}Wed}{16}{section.14}%
+\contentsline {subsection}{\numberline {A}Meeting with Julie}{16}{subsection.14.1}%
+\contentsline {subsection}{\numberline {B}AraSim Job Submission Script}{16}{subsection.14.2}%
+\contentsline {subsubsection}{\numberline {(a)}AraSimCall\_Array.sh}{16}{subsubsection.14.2.1}%
+\contentsline {subsubsection}{\numberline {(b)}AraSimCall\_Array.sh: my attempt}{17}{subsubsection.14.2.2}%
+\contentsline {section}{\numberline {15}Thu}{18}{section.15}%
+\contentsline {subsection}{\numberline {A}AraSim Job Submission Script}{18}{subsection.15.1}%
+\contentsline {subsubsection}{\numberline {(a)}AraSimCall\_Array.sh: my attempt}{18}{subsubsection.15.1.1}%
+\contentsline {subsection}{\numberline {B}Meeting with Julie}{18}{subsection.15.2}%
+\contentsline {section}{\numberline {16}Fri}{19}{section.16}%
+\contentsline {subsection}{\numberline {A}Birefringence Resources from Justin}{19}{subsection.16.1}%
+\contentsline {subsection}{\numberline {B}Meeting with Julie}{19}{subsection.16.2}%
+\contentsline {subsubsection}{\numberline {(a)}Notes from today's meeting}{19}{subsubsection.16.2.1}%
+\contentsline {subsubsection}{\numberline {(b)}Second pass of the Loop continued}{19}{subsubsection.16.2.2}%
+\contentsline {subsection}{\numberline {C}Bash}{20}{subsection.16.3}%
+\contentsline {section}{\numberline {17}Sat}{21}{section.17}%
+\contentsline {subsection}{\numberline {A}Meeting with Julie}{21}{subsection.17.1}%
+\contentsline {subsubsection}{\numberline {(a)}Part\_D2\_Array.sh Second Pass}{21}{subsubsection.17.1.1}%
+\contentsline {section}{\numberline {18}Sun}{23}{section.18}%
+\contentsline {subsection}{\numberline {A}Meeting with Julie}{23}{subsection.18.1}%
+\contentsline {subsubsection}{\numberline {(a)}Part\_D2\_Array.sh Second Pass Continued}{23}{subsubsection.18.1.1}%
+\contentsline {section}{\numberline {19}Mon}{24}{section.19}%
+\contentsline {subsection}{\numberline {A}Bash}{24}{subsection.19.1}%
+\contentsline {subsection}{\numberline {B}Meeting with Julie}{24}{subsection.19.2}%
+\contentsline {subsubsection}{\numberline {(a)}Part\_D2\_Array.sh Second Pass Continued}{24}{subsubsection.19.2.1}%
+\contentsline {section}{\numberline {20}Tue}{25}{section.20}%
+\contentsline {subsection}{\numberline {A}Meeting with Julie}{25}{subsection.20.1}%
+\contentsline {subsubsection}{\numberline {(a)}Part\_E\_Asym.sh second pass}{25}{subsubsection.20.1.1}%
+\contentsline {section}{\numberline {21}Wed}{26}{section.21}%
+\contentsline {subsection}{\numberline {A}Meeing with Julie}{26}{subsection.21.1}%
+\contentsline {subsubsection}{\numberline {(a)}Part\_E\_Asym.sh second pass continued}{26}{subsubsection.21.1.1}%
+\contentsline {section}{\numberline {22}Thu}{27}{section.22}%
+\contentsline {subsection}{\numberline {A}Meeting with Julie}{27}{subsection.22.1}%
+\contentsline {subsubsection}{\numberline {(a)}Part\_E\_Asym.sh second pass continued}{27}{subsubsection.22.1.1}%
+\contentsline {section}{\numberline {23}Fri}{28}{section.23}%
+\contentsline {subsection}{\numberline {A}Meeting with Julie}{28}{subsection.23.1}%
+\contentsline {subsubsection}{\numberline {(a)}notes from today's meeting}{28}{subsubsection.23.1.1}%
+\contentsline {subsubsection}{\numberline {(b)}Part\_A second pass}{28}{subsubsection.23.1.2}%
+\contentsline {subsubsection}{\numberline {(c)}Latest\_Asym\_GA.cpp}{28}{subsubsection.23.1.3}%
+\contentsline {section}{\numberline {25}Sun}{29}{section.25}%
+\contentsline {subsection}{\numberline {A}Meeting with Julie}{29}{subsection.25.1}%
+\contentsline {subsubsection}{\numberline {(a)}Latest\_Asym\_GA.cpp}{29}{subsubsection.25.1.1}%
+\contentsline {section}{\numberline {26}Mon}{30}{section.26}%
+\contentsline {subsection}{\numberline {A}Meeting with Julie}{30}{subsection.26.1}%
+\contentsline {subsubsection}{\numberline {(a)}Latest\_Asym\_GA.cpp}{30}{subsubsection.26.1.1}%
+\contentsline {section}{\numberline {27}Tue}{31}{section.27}%
+\contentsline {subsection}{\numberline {A}Meeting with Julie}{31}{subsection.27.1}%
+\contentsline {subsubsection}{\numberline {(a)}Latest\_Asym\_GA.cpp}{31}{subsubsection.27.1.1}%
+\contentsline {section}{\numberline {28}Wed}{32}{section.28}%
+\contentsline {subsection}{\numberline {A}Meeting with Alex}{32}{subsection.28.1}%
+\contentsline {subsubsection}{\numberline {(a)}Part\_E\_Asym.sh second pass continued}{32}{subsubsection.28.1.1}%
