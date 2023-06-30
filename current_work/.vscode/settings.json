@@ -1,7 +1,0 @@
-{
-  "files.associations": {
-    "*.plt": "gnuplot",
-    "vector": "cpp",
-    "string": "cpp"
-  }
-}

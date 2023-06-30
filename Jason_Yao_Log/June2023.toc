@@ -81,3 +81,9 @@
 \contentsline {section}{\numberline {28}Wed}{32}{section.28}%
 \contentsline {subsection}{\numberline {A}Meeting with Alex}{32}{subsection.28.1}%
 \contentsline {subsubsection}{\numberline {(a)}Part\_E\_Asym.sh second pass continued}{32}{subsubsection.28.1.1}%
+\contentsline {section}{\numberline {29}Thu}{33}{section.29}%
+\contentsline {subsection}{\numberline {A}Meeting with Julie}{33}{subsection.29.1}%
+\contentsline {subsection}{\numberline {B}GA}{33}{subsection.29.2}%
+\contentsline {section}{\numberline {30}Fri}{34}{section.30}%
+\contentsline {subsection}{\numberline {A}Hpol Work}{34}{subsection.30.1}%
+\contentsline {subsubsection}{\numberline {(a)}Loop}{34}{subsubsection.30.1.1}%
