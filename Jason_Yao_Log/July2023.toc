@@ -1,0 +1,10 @@
+\contentsline {section}{\numberline {1}Sat}{2}{section.1}%
+\contentsline {subsection}{\numberline {A}HPol Loop}{2}{subsection.1.1}%
+\contentsline {section}{\numberline {2}Sun}{3}{section.2}%
+\contentsline {subsection}{\numberline {A}HPol Loop}{3}{subsection.2.1}%
+\contentsline {section}{\numberline {4}Tue}{4}{section.4}%
+\contentsline {subsection}{\numberline {A}HPol Work}{4}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {(a)}GA}{4}{subsubsection.4.1.1}%
+\contentsline {section}{\numberline {6}Thu}{5}{section.6}%
+\contentsline {subsection}{\numberline {A}HPol Work}{5}{subsection.6.1}%
+\contentsline {subsubsection}{\numberline {(a)}GA: DataRead.cpp}{5}{subsubsection.6.1.1}%
