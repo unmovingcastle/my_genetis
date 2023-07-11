@@ -14,3 +14,7 @@
 \contentsline {section}{\numberline {9}Sun}{7}{section.9}%
 \contentsline {subsection}{\numberline {A}HPol Work}{7}{subsection.9.1}%
 \contentsline {subsubsection}{\numberline {(a)}GA: Sort.h}{7}{subsubsection.9.1.1}%
+\contentsline {section}{\numberline {10}Mon}{8}{section.10}%
+\contentsline {subsection}{\numberline {A}HPol Work}{8}{subsection.10.1}%
+\contentsline {subsubsection}{\numberline {(a)}GA: Sort.h}{8}{subsubsection.10.1.1}%
+\contentsline {subsection}{\numberline {B}Monday's Meeting}{8}{subsection.10.2}%
