@@ -99,9 +99,65 @@
     can keep adding commits to the branch and push them and it will update the PR.
     \end{quote}
 \end{enumerate}
+
 % June 11
+\section{Tue}
+\subsection{Git}
+\begin{enumerate}
+  \item A good video explaining how to squash git commits using "git rebase -i <#>"\\
+    \url{https://www.youtube.com/watch?v=RwvTrSm7zEY}
+\end{enumerate}
+\subsection{HPol Work}
+\subsubsection{GA: Sort.h}
+\begin{enumerate}
+  \item \st{Will test today if this still produce the desired result since I removed
+    the vector \texttt{original\_location} and int \texttt{t} yesterday.}
+  \item tested the above; the script works just fine.
+  \item Following Ezio's advice, stop making extraneous changes on the HPol branch.
+    Will make a patch branch to poke at and destroy and leave HPol alone until XF 
+    work is more or less done.
+\end{enumerate}
+\subsection{Clean Work}
+\begin{enumerate}
+  \item Started a new branch based on "Hpol" (base commit is "HPol Pause") called
+    "clean" locally. I will use this branch for my own understanding, possibly cleaning
+    up the scripts as I go over them.
+  \item From Ezio, regarding the workflow of GENETIS (in a closed pull-request at
+    \url{https://github.com/osu-particle-astrophysics/Shared-Code/pull/24})
+    \begin{quote}
+   1 create a local branch with some commits\\
+   2 push the branch on GitHub (git push origin your-branch) and create a PR
+   (it gives you a link to create it after the push)\\
+   3 wait for reviews and comments\\
+   4 add more commits to the local branch to address the reviews/comments\\
+   5 push them to GitHub (git push origin your-branch, without
+   forcing/squashing/rebasing) -- the PR will update automatically to include
+   the new commit\\
+   6 repeat steps 3-5 until the PR is approved\\
+   7 click on the squash merge button on GitHub to merge the PR on main\\
+    \end{quote}
+    
+\end{enumerate}
+
 % June 12
+\section{Wed}
+\subsection{HPol Work}
+\subsubsection{Loop}
+\begin{enumerate}
+  \item Looking into the various "Part_B1" scripts and the corresponding batch job.
+\end{enumerate}
+
 % June 13
+\section{Thu}
+\subsection{HPol Work}
+\subsubsection{Loop}
+\begin{enumerate}
+  \item Finished cleaning up "Part_B1"
+  \item Setting up HPol skeleton for "Part_B1"
+  \item Fixed Part A GA call error (when design is bicone)
+  \item Now using submodules for "Shared-Code" (more info in HPol repo's readme).
+  \item Started looking into "Part_B2"
+\end{enumerate}
 % June 14
 % June 15
 % June 16

@@ -18,3 +18,14 @@
 \contentsline {subsection}{\numberline {A}HPol Work}{8}{subsection.10.1}%
 \contentsline {subsubsection}{\numberline {(a)}GA: Sort.h}{8}{subsubsection.10.1.1}%
 \contentsline {subsection}{\numberline {B}Monday's Meeting}{8}{subsection.10.2}%
+\contentsline {section}{\numberline {11}Tue}{9}{section.11}%
+\contentsline {subsection}{\numberline {A}Git}{9}{subsection.11.1}%
+\contentsline {subsection}{\numberline {B}HPol Work}{9}{subsection.11.2}%
+\contentsline {subsubsection}{\numberline {(a)}GA: Sort.h}{9}{subsubsection.11.2.1}%
+\contentsline {subsection}{\numberline {C}Clean Work}{9}{subsection.11.3}%
+\contentsline {section}{\numberline {12}Wed}{10}{section.12}%
+\contentsline {subsection}{\numberline {A}HPol Work}{10}{subsection.12.1}%
+\contentsline {subsubsection}{\numberline {(a)}Loop}{10}{subsubsection.12.1.1}%
+\contentsline {section}{\numberline {13}Thu}{11}{section.13}%
+\contentsline {subsection}{\numberline {A}HPol Work}{11}{subsection.13.1}%
+\contentsline {subsubsection}{\numberline {(a)}Loop}{11}{subsubsection.13.1.1}%
